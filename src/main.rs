@@ -182,7 +182,10 @@ fn print_table(styled_header: bool, colums: usize) {
         let mut row = String::with_capacity(colums * 50);
         for column in 0..colums {
             let i = char + (char_per_column * column);
-            row.push_str(&format!("{:03o}{:>4}{:<7}{:02x}{:>5}{:<28}", i, " ", i, i, " ", CHARS[i]));
+            let oct = format!("{:03o}", i);
+            let dec = format!("{}", i);
+            let hex = format!("{:02x}", i);
+            row.push_str(&format!("{:6} {:6} {:6} {:28}", oct, dec, hex, CHARS[i]));
         }
         println!("{}", row);
     }
