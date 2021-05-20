@@ -21,7 +21,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "ascii-table"
+name = "ascii-printer"
 version = "0.1.0"
 dependencies = [
  "ansi_term 0.12.1",
