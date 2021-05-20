@@ -6,7 +6,6 @@ description = "Command line utility for displaying ASCII table"
 edition = "2018"
 repository = "https://github.com/barvirm/ascii-table"
 license = "MIT"
-license-file = "LICENSE"
 keywords = ["cli", "utility", "binary"]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
