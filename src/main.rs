@@ -174,18 +174,24 @@ fn table_title(styled: bool, colums: usize) -> String {
     title
 }
 
+fn ceil_usize_div(num: usize, den: usize) -> usize {
+    (num + den - 1) / den
+}
+
 fn print_table(styled_header: bool, colums: usize) {
-    let char_per_column = CHARS.len() / colums;
+    let char_per_column = ceil_usize_div(CHARS.len(), colums);
 
     println!("{}", table_title(styled_header, colums));
-    for char in 0..char_per_column-1 {
+    for char in 0..char_per_column {
         let mut row = String::with_capacity(colums * 50);
         for column in 0..colums {
             let i = char + (char_per_column * column);
-            let oct = format!("{:03o}", i);
-            let dec = format!("{}", i);
-            let hex = format!("{:02x}", i);
-            row.push_str(&format!("{:6} {:6} {:6} {:28}", oct, dec, hex, CHARS[i]));
+            if i < CHARS.len() {
+                let oct = format!("{:03o}", i);
+                let dec = format!("{}", i);
+                let hex = format!("{:02x}", i);
+                row.push_str(&format!("{:6} {:6} {:6} {:28}", oct, dec, hex, CHARS[i]));
+            }
         }
         println!("{}", row);
     }
